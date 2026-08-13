@@ -1,5 +1,5 @@
 
-export const splitText = (text, chunkSize = 500, overlap = 50) => {
+export const splitText = (text, chunkSize, overlap) => {
     let chunks = [];
 
     let start = 0;

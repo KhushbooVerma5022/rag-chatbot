@@ -28,3 +28,21 @@ export const cosineSimilarity = (vectorA, vectorB) => {
     return dotProduct / (magnitudeA * magnitudeB);
 }
 
+export const searchSimilar = (queryEmbedding) => {
+    const documents = getDocuments(); 
+
+    const results = documents.map((document) => {
+        const score = cosineSimilarity(
+            queryEmbedding,
+            document.embedding
+        );
+
+        return {
+            ...document,
+            score
+        }
+    })
+    results.sort((a, b) => b.score - a.score);
+
+    return results.slice(0, 2);
+}
