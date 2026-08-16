@@ -2,9 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import ragRoutes from "./routes/ragRoutes.js";
-import { loadDocuments } from "./rag/loadDocuments.js";
+import { loadPDFData } from "./rag/loadPDFData.js";
 
 dotenv.config();
+
 const app = express();
 
 app.use(cors());
@@ -21,5 +22,5 @@ app.get("/", (req, res) => {
 app.listen(PORT, async () => {
   console.log(`Server running on port ${PORT}`);
 
-  await loadDocuments();
+  await loadPDFData();
 });
